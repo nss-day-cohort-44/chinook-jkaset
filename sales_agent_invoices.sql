@@ -1,6 +1,8 @@
-SELECT DISTINCT e.FirstName, e.LastName, i.InvoiceId
-FROM Employee e
-JOIN CUSTOMER c
+SELECT DISTINCT e.FirstName, e.LastName, i.InvoiceId, i.Total
+FROM Invoice i
+
+JOIN Employee e
 ON e.EmployeeId = c.SupportRepId
-JOIN Invoice i
+JOIN CUSTOMER c
+ON c.CustomerId = i.CustomerId
 ;
