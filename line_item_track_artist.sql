@@ -1,12 +1,12 @@
-SELECT i.InvoiceId, t.name AS TrackName, a.name AS ArtistName
-FROM InvoiceLine
-JOIN Invoice 
-ON Invoice.InvoiceId = InvoiceLine.InvoiceId
-JOIN Track
-ON InvoiceLine.TrackId = Track.TrackId
+SELECT i.InvoiceId, 
+      t.Name AS TrackName, 
+      a.Name AS ArtistName
+FROM InvoiceLine i
+JOIN Track t
+  ON i.TrackId = t.TrackId
 JOIN Album
-ON Album.ArtistId = Track.AlbumId
-JOIN Artist
-ON Album.ArtistId = Artist.ArtistId
+  ON Album.ArtistId = t.AlbumId
+JOIN Artist a
+  ON Album.ArtistId = a.ArtistId
 
-GROUP BY InvoiceLine.InvoiceId ;
+GROUP BY i.InvoiceId ;
